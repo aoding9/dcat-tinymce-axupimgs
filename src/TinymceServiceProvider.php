@@ -26,7 +26,27 @@ class TinymceServiceProvider extends ServiceProvider {
                 $method->setAccessible(true);
                 $url = $method->invoke($editor);
                 $editor->options([
-                                     'images_upload_handler' =>
+                                     'plugins'               => [
+                                         'advlist',
+                                         'autolink',
+                                         'link',
+                                         'image',
+                                         'axupimgs',
+                                         'media',
+                                         'lists',
+                                         'preview',
+                                         'code',
+                                         'help',
+                                         'fullscreen',
+                                         'table',
+                                         'autoresize',
+                                         'codesample',
+                                     ],
+                                     'toolbar'               => [
+                                         'undo redo | preview fullscreen | styleselect | fontsizeselect bold italic underline strikethrough forecolor backcolor | link image axupimgs media blockquote removeformat codesample',
+                                         'alignleft aligncenter alignright  alignjustify| indent outdent bullist numlist table subscript superscript | code',
+                                     ],// plugins和toolbar添加axupimgs
+                                     'images_upload_handler' =>\Dcat\Admin\Support\JavaScript::make(
                                          <<<JS
                                   function (blobInfo, succFun, failFun) {
        var xhr, formData;
@@ -52,7 +72,9 @@ class TinymceServiceProvider extends ServiceProvider {
        xhr.send(formData);
    }
 JS
-                          
+                                     ), // 直接写会被当成字符串，而不是js函数
+    
+                
                                  ]);
             });
         });
