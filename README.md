@@ -16,7 +16,9 @@ dcat扩展：tinymce富文本多图上传
 
 第一步：`composer require aoding9/dcat-tinymce-axupimgs`
 
+如果安装失败，切换官方源（阿里云镜像我试了装不上）
 
+`composer config repo.packagist composer https://packagist.org`
 
 因为官方源下载比较慢，国内镜像又有各种问题可能导致安装失败，可以把以下代码添加到composer.json，直接从github安装
 ```json
@@ -30,9 +32,7 @@ dcat扩展：tinymce富文本多图上传
 }
 ```
 
-官方源（阿里云镜像我试了装不上）
 
-`composer config repo.packagist composer https://packagist.org`
 
 
 第二步：`php artisan vendor:publish --provider="Aoding9\Dcat\TinymceAxupimgs\TinymceServiceProvider`
