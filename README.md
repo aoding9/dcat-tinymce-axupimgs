@@ -35,7 +35,7 @@ dcat扩展：tinymce富文本多图上传
 
 
 
-第二步：`php artisan vendor:publish --provider="Aoding9\Dcat\TinymceAxupimgs\TinymceServiceProvider`
+第二步：`php artisan vendor:publish --provider="Aoding9\Dcat\TinymceAxupimgs\TinymceServiceProvider"`
 
 发布静态资源到public目录
 
