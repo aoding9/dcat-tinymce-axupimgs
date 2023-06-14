@@ -4,19 +4,21 @@ dcat扩展：tinymce富文本多图上传
 
 效果：
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/hebjBHjITk.png!large)
+![](http://aoding9.top/uploads/images/2023-06-12/8daac9804e289ad88b4524bf6172faea6486912e8da78.png)
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/gfJMOTqHAp.png!large)
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/au0JseBO00.png!large)
+![](http://aoding9.top/uploads/images/2023-06-12/73f1513a7f115a6770f986f5150173ac6486913b7e654.png)
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/EIJa30Gfl1.png!large)
+![](http://aoding9.top/uploads/images/2023-06-12/3b41aa196cc0421ce15ddf62d5ebaaf764869144d18be.png)
+
+
+![](http://aoding9.top/uploads/images/2023-06-12/e67b2c0cc60fbc5b4fb9fdedf8ec78d76486912727354.png)
 
 ### 安装
 
 第一步：`composer require aoding9/dcat-tinymce-axupimgs`
 
-如果安装失败，切换官方源（阿里云镜像我试了装不上）
+如果安装失败，切换官方源（阿里云镜像试了装不上）
 
 `composer config repo.packagist composer https://packagist.org`
 
@@ -35,7 +37,7 @@ dcat扩展：tinymce富文本多图上传
 
 
 
-第二步：`php artisan vendor:publish --provider="Aoding9\Dcat\TinymceAxupimgs\TinymceServiceProvider"`
+第二步：`php artisan vendor:publish --provider="Aoding9\Dcat\TinymceAxupimgs\TinymceServiceProvider`
 
 发布静态资源到public目录
 
