@@ -1,4 +1,4 @@
-### 简介
+## 简介
 
 dcat扩展：tinymce富文本多图上传
 
@@ -12,7 +12,7 @@ dcat扩展：tinymce富文本多图上传
 
 ![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/EIJa30Gfl1.png!large)
 
-### 安装
+## 安装
 
 第一步：`composer require aoding9/dcat-tinymce-axupimgs`
 
@@ -40,7 +40,7 @@ dcat扩展：tinymce富文本多图上传
 发布静态资源到public目录
 
 
-### 配置
+## 配置
 
 修改config/admin.php，在directory中添加image_editor配置项，不填则上传到`'images/editor/' . today()->toDateString()`
 
@@ -68,10 +68,15 @@ image_upload_url_editor不填则使用dcat默认图片上传接口，填写则�
 
 
 
-### 使用
+## 使用
 在控制器form方法中使用editor即可
 ```php
 // ...
       $form->editor('content');
 
 ```
+
+## 更新
+
+- 1.0.1 （2023-6-30）
+  - 配置项新增image_upload_url_editor，用于修改图片上传接口
