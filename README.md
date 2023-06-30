@@ -43,6 +43,9 @@ dcat扩展：tinymce富文本多图上传
 ### 配置
 
 修改config/admin.php，在directory中添加image_editor配置项，不填则上传到`'images/editor/' . today()->toDateString()`
+
+image_upload_url_editor不填则使用dcat默认图片上传接口，填写则使用自定义接口
+
 ```php
 
 //...
@@ -57,6 +60,7 @@ dcat扩展：tinymce富文本多图上传
             'image'        => 'images',
             'file'         => 'files',
             'image_editor' => 'images/editor/' . today()->toDateString(), // 多图上传的路径
+            'image_upload_url_editor' => null, // 多图上传自定义接口
         ]
 
 ```
