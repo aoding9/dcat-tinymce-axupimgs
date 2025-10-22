@@ -4,13 +4,13 @@ dcat扩展：tinymce富文本多图上传
 
 效果：
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/hebjBHjITk.png!large)
+![Laravel](https://oss.tianwe.net/aoding9/0.png)
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/gfJMOTqHAp.png!large)
+![Laravel](https://oss.tianwe.net/aoding9/1.png)
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/au0JseBO00.png!large)
+![Laravel](https://oss.tianwe.net/aoding9/2.png)
 
-![Laravel](https://cdn.learnku.com/uploads/images/202306/09/78338/EIJa30Gfl1.png!large)
+![Laravel](https://oss.tianwe.net/aoding9/3.png)
 
 ## 安装
 
