@@ -13,16 +13,19 @@ class TinymceServiceProvider extends ServiceProvider {
     public function boot() {
         if ($this->app->runningInConsole()) {
             $this->publishes(
-                [__DIR__ . '/../resources/assets/axupimgs' => public_path('vendor/dcat-admin/dcat/plugins/tinymce/plugins/axupimgs')],
+                [__DIR__.'/../resources/assets/axupimgs' => public_path('vendor/dcat-admin/dcat/plugins/tinymce/plugins/axupimgs')],
                 'dcat-tinymce-axupimgs'
             );
         }
         
         Admin::booting(function() {
             Editor::resolving(function(Editor $editor) {
-                $editor->imageDirectory(config('admin.upload.directory.image_editor') ?? 'images/editor/' . today()->toDateString())
-                       ->height(400);
-                $url = $this->getUrl($editor);
+                if($dir = config('admin.upload.directory.image_editor')){
+                    $editor->imageDirectory($dir);
+                }
+                if ($url = config('admin.upload.directory.image_upload_url_editor')) {
+                    $editor->imageUrl($url);
+                }
                 $editor->options([
                                      'plugins'               => [
                                          'advlist',
@@ -47,11 +50,12 @@ class TinymceServiceProvider extends ServiceProvider {
                                      'images_upload_handler' => \Dcat\Admin\Support\JavaScript::make(
                                          <<<JS
                                   function (blobInfo, succFun, failFun) {
+
        var xhr, formData;
        var file = blobInfo.blob();
        xhr = new XMLHttpRequest();
        xhr.withCredentials = false;
-       xhr.open('POST', "$url"); // 图片上传url
+       xhr.open('POST', opts.images_upload_url); // 从options中获取图片上传url
        xhr.onload = function() {
            var json;
            if (xhr.status != 200) {
@@ -71,25 +75,10 @@ class TinymceServiceProvider extends ServiceProvider {
    }
 JS
                                      ), // 直接写会被当成字符串，而不是js函数
-                
+                                 
                                  ]);
             });
         });
     }
     
-    /**
-     * @Desc 获取图片上传接口url，如果admin.php没配置image_upload_url_editor则使用dcat的默认接口
-     * @param $editor
-     * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
-     * @throws \ReflectionException
-     * @Date 2023/6/30 17:37
-     */
-    public function getUrl($editor) {
-        if($url = config('admin.upload.directory.image_upload_url_editor')){
-            return $url;
-        }
-        $method = (new \ReflectionClass(get_class($editor)))->getMethod('defaultImageUploadUrl');
-        $method->setAccessible(true);
-        return $url = $method->invoke($editor);
-    }
 }

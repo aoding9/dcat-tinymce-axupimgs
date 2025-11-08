@@ -42,9 +42,11 @@ dcat扩展：tinymce富文本多图上传
 
 ## 配置
 
-修改config/admin.php，在directory中添加image_editor配置项，不填则上传到`'images/editor/' . today()->toDateString()`
+修改config/admin.php，在directory中添加
 
-image_upload_url_editor不填则使用dcat默认图片上传接口，填写则使用自定义接口
+image_editor：自定义上传目录，不填则传到Editor组件默认上传目录`'tinymce/images`
+
+image_upload_url_editor：自定义上传接口，不填则使用Editor组件图片上传接口
 
 ```php
 
@@ -59,8 +61,8 @@ image_upload_url_editor不填则使用dcat默认图片上传接口，填写则�
         'directory' => [
             'image'        => 'images',
             'file'         => 'files',
-            'image_editor' => 'images/editor/' . today()->toDateString(), // 多图上传的路径
-            'image_upload_url_editor' => null, // 多图上传自定义接口
+            'image_editor' => 'images/editor/' . today()->toDateString(), // 全局修改多图上传目录
+            'image_upload_url_editor' => null, // 全局修改多图上传接口
         ]
 
 ```
@@ -73,6 +75,9 @@ image_upload_url_editor不填则使用dcat默认图片上传接口，填写则�
 ```php
 // ...
       $form->editor('content');
+      
+      // ->imageDirectory('custom_directory') 局部修改图片上传目录
+      // ->imageUrl('custom_api_url') 局部修改图片上传接口
 
 ```
 
@@ -80,3 +85,8 @@ image_upload_url_editor不填则使用dcat默认图片上传接口，填写则�
 
 - 1.0.1 （2023-6-30）
   - 配置项新增image_upload_url_editor，用于修改图片上传接口
+- 1.0.2（2025-10-22）
+  - 支持php8
+- 1.0.3（2025-11-08）
+  - 调整图片默认上传目录，若未配置image_editor，则与dcat默认的富文本图片上传目录一致，即'tinymce/images`，可通过imageDirectory改变。
+  - 修复控制器中使用imageDirectory修改自定义目录不生效的bug
